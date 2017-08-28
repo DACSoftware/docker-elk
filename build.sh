@@ -5,7 +5,8 @@ export DOCKER_TAG=`echo $GIT_BRANCH | sed s/[^[:alnum:]_.-]/-/g`
 mkdir -p $DIR || exit $?
 pushd $DIR || exit $?
 
-git archive --format=tar --remote=$GIT_URL $GIT_BRANCH | tar -x || exit $?
+git clone $GIT_URL --branch $GIT_BRANCH elk || exit $?
+pushd elk || exit $?
 
 for IMAGE_TO_BUILD in elasticsearch logstash kibana
 do
@@ -16,5 +17,6 @@ do
     echo Finished $IMAGE_TO_BUILD
 done
 
+popd || exit $?
 popd || exit $?
 rm -rf $DIR || exit $?
