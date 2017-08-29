@@ -8,7 +8,7 @@ pushd $DIR || exit $?
 git clone $GIT_URL --branch $GIT_BRANCH elk || exit $?
 pushd elk || exit $?
 
-export IMAGE_TO_BUILD logstash
+export IMAGE_TO_BUILD=logstash
 
 echo Building $IMAGE_TO_BUILD
 export DOCKER_IMAGE=$IMAGE_TO_BUILD
