@@ -11,6 +11,8 @@ ADD https://raw.githubusercontent.com/DACSoftware/rancher-secrets/master/rancher
 USER root
 RUN chmod a+rx /usr/local/bin/rancher-secrets.sh
 
+USER logstash
+
 COPY pipeline/logstash.conf /usr/share/logstash/pipeline/logstash.conf
 COPY config/logstash.yml /usr/share/logstash/config/logstash.yml
 
