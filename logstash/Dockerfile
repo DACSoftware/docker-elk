@@ -8,6 +8,8 @@ COPY second-docker-entrypoint.sh /usr/local/bin/
 
 ADD https://raw.githubusercontent.com/DACSoftware/rancher-secrets/master/rancher-secrets.sh /usr/local/bin/rancher-secrets.sh
 
+RUN chmod a+rx /usr/local/bin/rancher-secrets.sh
+
 COPY pipeline/logstash.conf /usr/share/logstash/pipeline/logstash.conf
 COPY config/logstash.yml /usr/share/logstash/config/logstash.yml
 
